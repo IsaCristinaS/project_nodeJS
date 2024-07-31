@@ -51,9 +51,6 @@ class UsersController {
     user.name = name ?? user.name;
     user.email = email ?? user.email;
 
-    console.log(password)
-    console.log(old_password)
-
     if( password && !old_password){
       throw new AppError("Você precisa informar a senha antiga!")
     }
@@ -66,9 +63,6 @@ class UsersController {
       }
 
       user.password = await hash(password, 8);
-
-      console.log(password)
-      console.log(old_password)
     }
 
     await database.run(
